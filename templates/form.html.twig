@@ -1,2 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block body %}{{ form(personForm) }}{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/fpjsformvalidator/js/fp_js_validator.js') }}" type="text/javascript"></script>
+            <script>
+            {{ js_validator_config() }}
+            {{ init_js_validation() }}
+            </script>
+            
+{% endblock %}
+
+{% block body %}{{ form(personForm) }}
+
+{% endblock %}
+

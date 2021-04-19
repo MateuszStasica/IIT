@@ -21,7 +21,12 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('FpJsFormElement', './vendor/fp/jsformvalidator-bundle/src/Resources/public/js/FpJsFormValidatorWithJqueryInit.js')
 
+    .configureBabel(null, {
+        useBuiltIns: 'usage',
+        corejs: 3,
+    })
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
@@ -57,6 +62,8 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+
+    
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

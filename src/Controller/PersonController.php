@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\Length;
 
 class PersonController extends AbstractController
 {
@@ -17,8 +18,8 @@ class PersonController extends AbstractController
      */
     public function getForm(): Response
     {
-        $personForm = $this->createFormBuilder([])
-            ->add('firstName', TextType::class, ['label' => 'Name'])
+        $personForm = $this->createFormBuilder([],['attr' => ['id' => 'person-form']])
+            ->add('firstName', TextType::class, ['label' => 'Name','constraints' => [new Length(['min' => 3])]]) 
             ->add('lastName', TextType::class, ['label' => 'Last Name'])
             ->add('age', IntegerType::class, ['label' => 'Age'])
             ->add('email', TextType::class, ['label' => 'E-mail'])
